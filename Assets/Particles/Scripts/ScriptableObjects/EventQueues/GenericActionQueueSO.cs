@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Particles.Scripts.ScriptableObjects.Actions;
 using UnityEngine;
 
 public abstract class GenericActionQueue<TAction, TType> : ScriptableObject

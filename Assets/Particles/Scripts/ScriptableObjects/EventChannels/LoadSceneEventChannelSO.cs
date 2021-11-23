@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class LoadSceneEventChannelSO : ScriptableObject
 {
     public UnityAction<string[], bool> OnLoadingRequested;
-    public UnityAction<string, bool> OnLoadingRequestedSingle;
+    public UnityAction<string, bool, bool> OnLoadingRequestedSingle;
 
     public void RaiseEvent(string[] _sceneNames, bool _showLoadingScreen = true)
     {
@@ -19,9 +19,9 @@ public class LoadSceneEventChannelSO : ScriptableObject
         }
     }
 
-    public void RaiseEvent(string _sceneName, bool _showLoadingScreen = true)
+    public void RaiseEvent(string _sceneName, bool _showLoadingScreen = true, bool _shouldLoadSameScene=false)
     {
-        OnLoadingRequestedSingle?.Invoke(_sceneName, _showLoadingScreen);
+        OnLoadingRequestedSingle?.Invoke(_sceneName, _showLoadingScreen, _shouldLoadSameScene);
         if (OnLoadingRequestedSingle == null)
         {
             Debug.LogWarning("Single Scene loading was requested but no SceneLoader responded!");

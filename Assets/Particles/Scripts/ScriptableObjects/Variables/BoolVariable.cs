@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Particles.Scripts.ScriptableObjects.Variables;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Variables/Bool", fileName = "Bool")]
 [System.Serializable]

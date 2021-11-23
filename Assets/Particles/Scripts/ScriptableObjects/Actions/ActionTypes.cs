@@ -1,3 +1,4 @@
+using Particles.Scripts.ScriptableObjects.Actions;
 using UnityEngine;
 
 namespace Actions
@@ -16,8 +17,15 @@ namespace Actions
 
     #region Reference Action Types
 
+    public abstract class StringAction : GenericAction<string> { }
+    public abstract class String2Action : GenericAction<string, string> { }
+
     public abstract class TransformAction : GenericAction<Transform> { }
+    public abstract class Transform2Action : GenericAction<Transform, Transform> { }
+    
     public abstract class GameObjectAction : GenericAction<GameObject> { }
+    public abstract class GameObject2Action : GenericAction<GameObject, GameObject> { }
+    
     public abstract class CollisionAction : GenericAction<Collision> { }
     public abstract class Collision2DAction : GenericAction<Collision2D> { }
     public abstract class ColliderAction : GenericAction<Collider> { }

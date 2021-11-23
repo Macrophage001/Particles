@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Particles.Scripts.ScriptableObjects.Variables;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Variables/Gradient", fileName = "Gradient")]
 public class GradientVariable : Variable<Gradient>

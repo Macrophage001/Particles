@@ -10,7 +10,6 @@ abstract public class GenericEventChannelSO<T> : ScriptableObject
 
     public void RaiseEvent(T _obj)
     {
-        //Debug.Log($"{name} Event Raised with parameter: {_obj.ToString()}");
         OnEventRaised?.Invoke(_obj);
     }
 }

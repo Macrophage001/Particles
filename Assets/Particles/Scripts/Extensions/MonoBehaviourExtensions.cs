@@ -1,17 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Particles.Extensions
+namespace Particles.Scripts.Extensions
 {
-    public interface Indexable<TElement>
+    public interface IIndexable<out TElement>
     {
         public TElement GetAt(int _index);
         public int Count();
     }
-
-    public struct TransformIndexable : Indexable<Transform>
+    
+    /// <summary>
+    /// Literally just a wrapper for two of the Transform component's functions.
+    /// </summary>
+    public struct TransformIndexable : IIndexable<Transform>
     {
         private Transform _transform;
 
@@ -25,113 +26,91 @@ namespace Particles.Extensions
         public int Count() => _transform.childCount;
     }
     
+    
+
+    /// <summary>
+    /// Allows the user to apply 1D and 2D array-based indexing to an object that didn't have it previously, like Transforms.
+    /// </summary>
+    /// <typeparam name="TIndexable"></typeparam>
+    /// <typeparam name="TElement"></typeparam>
     public struct Indexer<TIndexable, TElement>
-        where TIndexable: Indexable<TElement>
+        where TIndexable: IIndexable<TElement>
     {
         private TIndexable _indexable;
-
+        
         public Indexer(TIndexable _indexable) => this._indexable = _indexable;
         public TElement this[int _index] => _indexable.GetAt(_index);
         public TElement this[int _index0, int _index1] => _indexable.GetAt(_index1 * _indexable.Count() + _index0);
 
         public int Count => _indexable.Count();
     }
-
-    public struct DynamicTransformArrayEnumerator : IEnumerator<Transform>
-    {
-        private Transform _transform;
-        private int _index;
-
-        public DynamicTransformArrayEnumerator(
-            Transform _transform,
-            int _index)
-        {
-            this._transform = _transform;
-            this._index = _index;
-        }
-        public bool MoveNext()
-        {
-            _index++;
-            return _index < _transform.childCount;
-        }
-
-        public void Reset()
-        {
-            _index = -1;
-        }
-
-        public Transform Current
-        {
-            get => _transform.GetChild(_index);
-        }
-
-        object IEnumerator.Current => Current;
-
-        public void Dispose()
-        {
-            // Not used.
-        }
-    }
-
-    public struct DynamicTransform : CollectionExtensions.ICollection<Transform, DynamicTransformArrayEnumerator, DynamicTransform>
-    {
-        private Transform _transform;
-        private int _length;
-
-        public DynamicTransform(Transform _transform)
-        {
-            this._transform = _transform;
-            _length = _transform.childCount;
-        }
-
-        public Transform this[int _index]
-        {
-            get
-            {
-                if (_index >= _length)
-                {
-                    throw new IndexOutOfRangeException($"{_index} >= {_length}");
-                }
-
-                return _transform.GetChild(_index);
-            }
-
-            set
-            {
-                if (_index >= _length)
-                {
-                    throw new IndexOutOfRangeException($"{_index} >= {_length}");
-                }
-
-                value.parent = _transform;
-            }
-        }
-        
-        public DynamicTransformArrayEnumerator GetEnumerator()
-        {
-            return new DynamicTransformArrayEnumerator(_transform, -1);
-        }
-
-        public DynamicTransform Allocate()
-        {
-            // Not used.
-            return this;
-        }
-
-        public void Add(Transform _element)
-        {
-            _element.parent = _transform;
-        }
-    }
-
+    
+    
+    
+    
     public static class MonoBehaviourExtensions
     {
         #region GameObject Extensions
-        public static bool TryGetComponentInParent(this GameObject _gameObject, Type _type, out Component _component)
+        public static bool TryGetComponentInParent<T>(this GameObject _gameObject, Action<T> _action)
+            where T : Component
         {
             GameObject _parentObject = _gameObject.transform.parent.gameObject;
-            return _parentObject.TryGetComponent(_type, out _component);
+            if (_parentObject.TryGetComponent(out T _component))
+            {
+                _action(_component);
+                return true;
+            }
+            return false;
         }
+
+        public static GameObject Map(this GameObject _gameObject, Func<GameObject, GameObject> _func)
+            => _func(_gameObject);
+
+        public static void ForComponent<T>(this GameObject _gameObject, Action<T> _action)
+            where T : Component
+        {
+            if (_gameObject.TryGetComponent(out T _component))
+            {
+                _action?.Invoke(_component);
+            }
+        }
+
+        public static T ForComponent<TComponent, T>(this GameObject _gameObject, Func<TComponent, T> _func)
+            where TComponent : Component
+        {
+            if (_gameObject.TryGetComponent(out TComponent _component))
+                return _func(_component);
+            return default;
+        }
+        
+        public static void ForComponents<T0, T1>(this GameObject _gameObject, Action<T0, T1> _action)
+            where T0 : Component
+            where T1 : Component
+        {
+            if (_gameObject.TryGetComponent(out T0 _component0) &&
+                _gameObject.TryGetComponent(out T1 _component1))
+            {
+                _action?.Invoke(_component0, _component1);
+            }
+        }
+        public static void ForComponents<T0, T1, T2>(this GameObject _gameObject, Action<T0, T1, T2> _action)
+            where T0 : Component
+            where T1 : Component
+            where T2 : Component
+        {
+            if (_gameObject.TryGetComponent(out T0 _component0) &&
+                _gameObject.TryGetComponent(out T1 _component1) &&
+                _gameObject.TryGetComponent(out T2 _component2))
+            {
+                _action?.Invoke(_component0, _component1, _component2);
+            }
+        }
+
+        public static bool HasComponent<T>(this GameObject _gameObject)
+        {
+            return _gameObject.TryGetComponent(typeof(T), out Component _component);
+        }
+        
         #endregion
 
         #region Transform Extensions
@@ -139,9 +118,9 @@ namespace Particles.Extensions
         public static Transform[] GetChildren(this Transform _transform)
         {
             Transform[] _childTransforms = new Transform[_transform.childCount];
-            for (int i = _transform.childCount - 1; i >= 0; --i)
+            for (int _i = _transform.childCount - 1; _i >= 0; --_i)
             {
-                _childTransforms[i] = _transform.GetChild(i);
+                _childTransforms[_i] = _transform.GetChild(_i);
             }
 
             return _childTransforms;
@@ -149,9 +128,16 @@ namespace Particles.Extensions
 
         public static void SetChildrenActive(this Transform _transform, bool _active)
         {
-            foreach (Transform _t in _transform)
+            if (_transform.childCount > 0)
             {
-                _t.gameObject.SetActive(_active);
+                foreach (Transform _t in _transform)
+                {
+                    _t.gameObject.SetActive(_active);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"{_transform.name} is Empty");
             }
         }
 

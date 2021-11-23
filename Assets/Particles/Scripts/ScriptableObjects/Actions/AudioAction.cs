@@ -1,3 +1,4 @@
+using Particles.Scripts.ScriptableObjects.Actions;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Actions/Audio Action")]
