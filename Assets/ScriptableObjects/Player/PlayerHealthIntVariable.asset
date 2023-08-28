@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6913824b8ba02cb4db458f5f4278d4e8, type: 3}
+  m_Name: PlayerHealthIntVariable
+  m_EditorClassIdentifier: 
+  id: 
+  description: 
+  onVariableChanged: {fileID: 11400000, guid: 9c7e3b7d17f9028488cf291e8b84711b, type: 2}
+  transformers:
+  - {fileID: 11400000, guid: 39ff39034f0957d4988fdec49ccacbee, type: 2}
+  initialValue: 100
+  value: 40
+  oldValue: 50

@@ -1,0 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////
+// This file is auto-generated.
+// Do not hand modify this file.
+// It will be overwritten next time the generator is run.
+////////////////////////////////////////////////////////////////////////////////
+
+using UnityEngine;
+using TYPENAMESPACE;
+
+[CreateAssetMenu(menuName = "Events/CLASSNAME Event Channel")]
+public class CLASSNAMEEventChannelSO : GenericEventChannelSO<TYPENAME>
+{ }

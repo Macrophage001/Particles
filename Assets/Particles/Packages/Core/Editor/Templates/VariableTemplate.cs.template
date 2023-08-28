@@ -1,0 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
+// This file is auto-generated.
+// Do not hand modify this file.
+// It will be overwritten next time the generator is run.
+////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TYPENAMESPACE;
+
+public class TYPENAMEVariable : Variable<TYPENAME>
+{ }

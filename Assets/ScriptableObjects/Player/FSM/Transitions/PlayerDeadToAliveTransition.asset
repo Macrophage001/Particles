@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2731e60cbca4f4cbaa63f2ec568f3d, type: 3}
+  m_Name: PlayerDeadToAliveTransition
+  m_EditorClassIdentifier: 
+  description: 
+  id: 
+  from: {fileID: 11400000, guid: e0cdb3e02564e0a4095030b063869be9, type: 2}
+  to: {fileID: 11400000, guid: 817f5041605cc474b8d333754f707f77, type: 2}
+  condition: {fileID: 11400000, guid: 0224052c23f8e3a42bbfd425f287aeb1, type: 2}

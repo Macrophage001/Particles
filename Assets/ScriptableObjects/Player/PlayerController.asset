@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f267eae058643409094f961496ec97, type: 3}
+  m_Name: PlayerController
+  m_EditorClassIdentifier: 
+  id: playerController
+  description: Player's Main Controller.
+  maxHealth: {fileID: 11400000, guid: 2ec9ca8fe0200494f9a5ec0a6bba59bf, type: 2}
+  playerHealth: {fileID: 11400000, guid: b2b4c29276f46cf47ba4e4f78d9f044c, type: 2}
+  playerSpeed: {fileID: 11400000, guid: c08d6c7e148fe7d4881090b94258ac6c, type: 2}
+  playerIsAlive: {fileID: 11400000, guid: 4a6d6f1ed8b9604478b6f70536d69707, type: 2}
