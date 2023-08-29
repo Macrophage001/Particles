@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Particles.Packages.Core.Runtime;
 using Particles.Packages.Core.Runtime.Attributes;
+using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,6 +34,25 @@ namespace Particles.Packages.BaseParticles.Runtime.Events
         [SerializeField] protected T inspectorValue;
 
         public T InspectorValue => inspectorValue;
+        
+        [SerializeField]
+        [ReadOnly]
+        protected object eventSource;
+
+        public object EventSource
+        {
+            get => eventSource;
+            set
+            {
+                eventSource = value switch
+                {
+                    GameObject o => o,
+                    Component c => c.gameObject,
+                    ScriptableObject s => s,
+                    _ => throw new UnityException($"Cannot set event source for type {value.GetType()}")
+                };
+            }
+        }
 
 #if UNITY_EDITOR
         private static HashSet<GenericEvent<T>> instances = new();
@@ -56,6 +76,7 @@ namespace Particles.Packages.BaseParticles.Runtime.Events
             UnregisterAll();
         }
 
+        
         public void RaiseEvent(T obj)
         {
             onEventRaised?.Invoke(obj);
@@ -101,6 +122,24 @@ namespace Particles.Packages.BaseParticles.Runtime.Events
         public T0 InspectorValue0 => inspectorValue0;
         public T1 InspectorValue1 => inspectorValue1;
 
+        [SerializeField]
+        [ReadOnly]
+        protected object eventSource;
+
+        public object EventSource
+        {
+            get => eventSource;
+            set
+            {
+                eventSource = value switch
+                {
+                    GameObject o => o,
+                    Component c => c.gameObject,
+                    ScriptableObject s => s,
+                    _ => throw new UnityException($"Cannot set event source for type {value.GetType()}")
+                };
+            }
+        }
         
 #if UNITY_EDITOR
         private static HashSet<GenericEvent<T0, T1>> instances = new();
@@ -170,6 +209,26 @@ namespace Particles.Packages.BaseParticles.Runtime.Events
         public T0 InspectorValue0 => inspectorValue0;
         public T1 InspectorValue1 => inspectorValue1;
         public T2 InspectorValue2 => inspectorValue2;
+        
+        
+        [SerializeField]
+        [ReadOnly]
+        protected object eventSource;
+
+        public object EventSource
+        {
+            get => eventSource;
+            set
+            {
+                eventSource = value switch
+                {
+                    GameObject o => o,
+                    Component c => c.gameObject,
+                    ScriptableObject s => s,
+                    _ => throw new UnityException($"Cannot set event source for type {value.GetType()}")
+                };
+            }
+        }
         
 #if UNITY_EDITOR
         private static HashSet<GenericEvent<T0, T1, T2>> instances = new();

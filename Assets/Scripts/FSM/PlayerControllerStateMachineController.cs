@@ -15,8 +15,9 @@ namespace FSM
         }
 
 
-        public void HealthChanged(int health)
+        public void HealthChanged(object source, int health)
         {
+            Debug.Log(source.ToString());
             Debug.Log($"New Health: {health}");
         }
     }

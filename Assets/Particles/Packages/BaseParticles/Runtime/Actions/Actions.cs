@@ -1,4 +1,4 @@
-using Particles.Packages.Core.Runtime.ScriptableObjects.Actions;
+using Particles.Packages.Core.Runtime.Actions;
 using UnityEngine;
 
 namespace Particles.Packages.BaseParticles.Runtime.Actions

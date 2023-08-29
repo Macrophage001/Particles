@@ -16,17 +16,17 @@ namespace Particles.Packages.Core.Runtime.Hooks
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (triggerType == Trigger2DHookType.Enter) OnHook(new EventInvocationProperties<Collider2D>() { invokerSourceId = GetInstanceID(), value = other});
+            if (triggerType == Trigger2DHookType.Enter) OnHook(other);
         }
         
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (triggerType == Trigger2DHookType.Exit) OnHook(new EventInvocationProperties<Collider2D>() { invokerSourceId = GetInstanceID(), value = other});
+            if (triggerType == Trigger2DHookType.Exit) OnHook(other);
         }
         
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (triggerType == Trigger2DHookType.Stay) OnHook(new EventInvocationProperties<Collider2D>() { invokerSourceId = GetInstanceID(), value = other});
+            if (triggerType == Trigger2DHookType.Stay) OnHook(other);
         }
     }
 }

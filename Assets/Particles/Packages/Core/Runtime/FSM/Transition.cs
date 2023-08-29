@@ -1,5 +1,5 @@
 ﻿using Particles.Packages.Core.Runtime.Attributes;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Functions;
+using Particles.Packages.Core.Runtime.Functions;
 
 namespace Particles.Packages.Core.Runtime.FSM
 {

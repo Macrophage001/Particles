@@ -1,4 +1,4 @@
-﻿namespace Particles.Packages.Core.Runtime.ScriptableObjects.Functions
+﻿namespace Particles.Packages.Core.Runtime.Functions
 {
     public abstract class ParticleFunction<R> : Particle
     {

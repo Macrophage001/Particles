@@ -1,5 +1,5 @@
 using Particles.Packages.BaseParticles.Runtime.Variables;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Actions;
+using Particles.Packages.Core.Runtime.Actions;
 using UnityEngine;
 
 namespace Actions

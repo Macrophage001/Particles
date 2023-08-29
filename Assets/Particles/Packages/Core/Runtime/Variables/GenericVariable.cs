@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Particles.Packages.BaseParticles.Runtime.Events;
-using Particles.Packages.Core.Runtime;
 using Particles.Packages.Core.Runtime.Attributes;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Functions;
+using Particles.Packages.Core.Runtime.Functions;
 using UnityEngine;
 
-namespace Particles.Packages.BaseParticles.Runtime.Variables
+namespace Particles.Packages.Core.Runtime.Variables
 {
     public abstract class GenericBaseVariable<T> : Particle
     {
@@ -54,6 +53,7 @@ namespace Particles.Packages.BaseParticles.Runtime.Variables
 
             if (triggerEvents)
             {
+                onVariableChanged.EventSource = this;
                 onVariableChanged.RaiseEvent(newValue);
             }
 

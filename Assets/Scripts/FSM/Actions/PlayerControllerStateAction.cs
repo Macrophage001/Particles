@@ -1,5 +1,5 @@
+using Particles.Packages.Core.Runtime.Actions;
 using Particles.Packages.Core.Runtime.FSM;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Actions;
 
 namespace FSM.Actions
 {

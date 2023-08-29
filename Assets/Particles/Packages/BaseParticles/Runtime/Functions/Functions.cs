@@ -1,4 +1,4 @@
-﻿using Particles.Packages.Core.Runtime.ScriptableObjects.Functions;
+﻿using Particles.Packages.Core.Runtime.Functions;
 using UnityEngine;
 
 namespace Particles.Packages.BaseParticles.Runtime.Functions

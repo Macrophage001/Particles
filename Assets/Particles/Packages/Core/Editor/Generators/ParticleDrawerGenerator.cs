@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using Particles.Packages.BaseParticles.Runtime.Variables;
 using Particles.Packages.Core.Editor.Drawers;
 using Particles.Packages.Core.Runtime;
+using Particles.Packages.Core.Runtime.Variables;
 using UnityEditor;
 using UnityEngine;
 using TypeHelper = Particles.Packages.Core.Editor.Helpers.TypeHelper;

@@ -1,4 +1,5 @@
 ﻿using Particles.Packages.Core.Runtime.Attributes;
+using Particles.Packages.Core.Runtime.Variables;
 using UnityEngine;
 
 namespace Particles.Packages.BaseParticles.Runtime.Variables

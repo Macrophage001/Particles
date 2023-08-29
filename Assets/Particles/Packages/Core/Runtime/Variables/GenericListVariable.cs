@@ -3,7 +3,7 @@ using System.Linq;
 using Particles.Packages.BaseParticles.Runtime.Events;
 using Particles.Packages.Core.Runtime.Attributes;
 
-namespace Particles.Packages.BaseParticles.Runtime.Variables
+namespace Particles.Packages.Core.Runtime.Variables
 {
     public abstract class GenericListVariable<L, T> : GenericVariable<L> 
         where L : List<T>, new()

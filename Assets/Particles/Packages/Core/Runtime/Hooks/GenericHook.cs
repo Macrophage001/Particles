@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace Particles.Packages.Core.Runtime.Hooks
 {
-    public class GenericHook<T, E, EV> : MonoBehaviour
-        where EV : EventInvocationProperties<T>, new()
-        where E : GenericEvent<EV>
+    public class GenericHook<E, T> : MonoBehaviour
+        where E : GenericEvent<T>
     {
         [SerializeField] private E eventChannelSO;
-        protected void OnHook(EV value)
+        protected void OnHook(T value)
         {
             eventChannelSO.RaiseEvent(value);
         }

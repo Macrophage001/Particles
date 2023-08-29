@@ -1,5 +1,5 @@
 using Particles.Packages.BaseParticles.Runtime.Constants;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Functions;
+using Particles.Packages.Core.Runtime.Functions;
 using UnityEngine;
 
 namespace Transformers.Player

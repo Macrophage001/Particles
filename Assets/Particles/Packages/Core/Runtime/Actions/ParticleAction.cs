@@ -1,4 +1,4 @@
-namespace Particles.Packages.Core.Runtime.ScriptableObjects.Actions
+namespace Particles.Packages.Core.Runtime.Actions
 {
     public abstract class ParticleAction : Particle
     {

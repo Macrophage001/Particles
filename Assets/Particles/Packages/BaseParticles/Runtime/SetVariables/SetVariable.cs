@@ -1,5 +1,6 @@
 using Particles.Packages.BaseParticles.Runtime.Variables;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Actions;
+using Particles.Packages.Core.Runtime.Actions;
+using Particles.Packages.Core.Runtime.Variables;
 using UnityEngine;
 
 namespace Particles.Packages.BaseParticles.Runtime.SetVariables

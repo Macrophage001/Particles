@@ -1,6 +1,5 @@
 using Particles.Packages.BaseParticles.Runtime.Functions;
 using Particles.Packages.BaseParticles.Runtime.Variables;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Functions;
 using UnityEngine;
 
 namespace FSM.Transitions.Actions

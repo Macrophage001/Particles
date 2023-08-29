@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Particles.Packages.BaseParticles.Runtime.Events;
-using Particles.Packages.Core.Runtime.ScriptableObjects.Actions;
+using Particles.Packages.Core.Runtime.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 

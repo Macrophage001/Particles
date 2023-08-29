@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Particles.Packages.Core.Runtime.ScriptableObjects
+namespace Particles.Packages.Core.Runtime
 {
     [CreateAssetMenu(menuName = "Scene Data")]
     public class SceneSO : ScriptableObject
